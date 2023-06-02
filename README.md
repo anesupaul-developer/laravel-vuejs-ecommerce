@@ -13,24 +13,11 @@ This is a docker laravel 10.8, php 8.1, mysql, nginx starter boilerplate.
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## How to run the application
+##
 
-    - git clone https://github.com/anesupaul-developer/laravel-mysql-docker-boilerplate.git
+This project idea I got it from upwork and I think I can showcase the best I can write with regards
+to Laravel, Docker, VueJS, Livewire and Mysql. [Upwork](https://www.upwork.com/jobs/span-class-highlight-Laravel-span-Vue-develop_~01611ede93cecd742b/)
 
-    - cd laravel-mysql-docker-boilerplate
-
-    - configure .env file and set mandatory fields DB_ROOT_PASSWORD, DB_DATABASE_TEST
-
-    - make test
-    # to run app in production run make prod. You can configure more environments inside Makefile
-
-## Commands Examples
-
-    - docker exec -it application_php81test php artisan migrate
-    - docker exec -it application_php81test mkdir src/app/Repositories
-    - docker exec -it application_php81 php artisan tinker
-
-## Application
-
-Go to localhost:8089 inside your browser to see the application in testing mode.
-Go to localhost:8088 inside your browser to see the application in production mode.
+Email address: anesupaulngirande@gmail.com
+Mobile Number: (+263) 772 982 812
+LinkedIn: https://www.linkedin.com/in/anesu-paul-ngirande-71904a170
