@@ -11,6 +11,9 @@ prod:
 	docker exec -it pp bash -c 'php artisan migrate'
 	docker exec -it pp bash -c 'php artisan db:seed'
 
+phpprod:
+	docker exec -it pp bash
+
 test:
 	docker-compose --env-file=./src/.env \
 		-f infrastructure/docker-compose-test.yml \
