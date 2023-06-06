@@ -23,17 +23,35 @@ to Laravel, Docker, VueJS, Livewire and Mysql. [Upwork](https://www.upwork.com/j
 
 This application is handling our client subscription and product information and media management.
 The idea is that we would need to create a web application that will allow us to support our users and store their private data in our servers.
-There should be a possibility that users should be able to register, apply for an account, get approved by an administrator(s), choose a subscription plan, and pay for it. After payment they should get permission to create their store account and insert/upload their products to our system according to the subscription plan.
-After uploading their products to our system, administrators will check and approve/reject uploaded data and if it is approved all that client uploaded data with image paths, etc …  should be ingested to our external Robot API endpoint.
+
+    - There should be a possibility that users should be able to register.
+    - Apply for an account.
+    - Get approved by an administrator(s).
+    - Choose a subscription plan, and pay for it. 
+    
+After payment they should get
+
+    - Permission to create their store account.
+    - Permission to insert/upload their products to our system according to the subscription plan.
+
+After uploading their products to our system 
+
+    - Administrators will check and approve/reject uploaded data.
+
+If it is approved all that client uploaded data with image paths, etc …  should be ingested to our 
+
+    - After approval send data to external Robot API endpoint. [Just use a fake endpoint]
 
 Manager. (Partly done)
-The application should have also Administration for managers with following features
-User management, which includes user create/ edit/ delete/ suspend
-User registration status review: It means we can accept users or decline them.
+
+    - The application should have also Administration for managers with following features
+    - User management, which includes user create/ edit/ delete/ suspend
+    - User registration status review: It means we can accept users or decline them.
 
 Super Admin (Partly done)
-Super admin should have all functions as Administrator manager plus should be able to do following specific functions.
-Manage Administrators, reset password,  add/delete/edit new manager info and status.
+
+    - Super admin should have all functions as Administrator manager plus should be able to do following specific functions.
+    - Manage Administrators, reset password,  add/delete/edit new manager info and status.
 
 Subscription plans (MUST BE DONE using strip)
 
