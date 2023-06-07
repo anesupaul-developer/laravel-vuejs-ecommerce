@@ -48,6 +48,6 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessFilament(): bool
     {
-        return $this->hasRole(UserType::admins());
+        return $this->hasRole(UserType::getAdminRolesOnly());
     }
 }
