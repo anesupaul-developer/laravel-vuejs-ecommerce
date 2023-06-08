@@ -68,8 +68,9 @@ class ProductResource extends Resource
                     ->boolean()
                     ->trueIcon('heroicon-o-badge-check')
                     ->falseIcon('heroicon-o-x-circle'),
-                TextColumn::make('approver.name'),
-                TextColumn::make('created_at')->dateTime('Y-m-d H:i')
+                TextColumn::make('approver.name')
+                    ->placeholder('N/A'),
+                TextColumn::make('created_at')->dateTime('d-M-Y H:i')
             ])
             ->filters([
                 Filter::make('approved')
