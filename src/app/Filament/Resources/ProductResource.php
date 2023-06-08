@@ -29,10 +29,16 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'Resources';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema(Forms\Components\Card::make([
+                Forms\Components\Select::make('store_account_id')
+                    ->relationship('account', 'name')
+                    ->label('Store Account')
+                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -44,8 +50,6 @@ class ProductResource extends Resource
                     ->directory('product_images')
                     ->enableDownload()
                     ->enableOpen(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('owner', 'name'),
                 Forms\Components\Toggle::make('is_approved')
                     ->onIcon('heroicon-s-lightning-bolt')
                     ->offIcon('heroicon-s-lock-closed')
@@ -62,7 +66,7 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->sortable(),
-                TextColumn::make('owner.name'),
+                TextColumn::make('account.name'),
                 TextColumn::make('price')->sortable(),
                 IconColumn::make('is_approved')
                     ->boolean()
@@ -70,7 +74,7 @@ class ProductResource extends Resource
                     ->falseIcon('heroicon-o-x-circle'),
                 TextColumn::make('approver.name')
                     ->placeholder('N/A'),
-                TextColumn::make('created_at')->dateTime('d-M-Y H:i')
+                TextColumn::make('created_at')->dateTime('Y-m-d H:i')
             ])
             ->filters([
                 Filter::make('approved')

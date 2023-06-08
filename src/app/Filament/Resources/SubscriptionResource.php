@@ -45,7 +45,7 @@ class SubscriptionResource extends Resource
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('d-M-Y H:i'),
+                    ->dateTime('Y-m-d H:i'),
             ])
             ->filters([
                 //

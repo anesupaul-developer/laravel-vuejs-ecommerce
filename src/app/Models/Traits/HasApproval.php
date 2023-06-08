@@ -13,11 +13,11 @@ trait HasApproval
          *
          **/
         static::updating(function (Model $model) {
-            if ($model->getAttribute('is_approved') === true) {
+            if ($model->getAttribute('is_approved')) {
                 $model->setAttribute('approved_by', auth()->user()->id);
             }
 
-            if ($model->getAttribute('is_approved') === false) {
+            if (!$model->getAttribute('is_approved')) {
                 $model->setAttribute('approved_by', null);
             }
         });

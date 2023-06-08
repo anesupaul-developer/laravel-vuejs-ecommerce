@@ -10,15 +10,22 @@ class Product extends Model
 {
     use HasFactory, HasApproval;
 
-    protected $fillable = ['name', 'price', 'user_id', 'description', 'image_url', 'is_approved'];
+    protected $fillable = [
+        'name',
+        'price',
+        'store_account_id',
+        'description',
+        'image_url',
+        'is_approved'
+    ];
 
     protected $casts = [
         'is_approved' => 'boolean'
     ];
 
-    public function owner(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function account(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(StoreAccount::class, 'store_account_id', 'id');
     }
 
     public function approver(): \Illuminate\Database\Eloquent\Relations\BelongsTo
