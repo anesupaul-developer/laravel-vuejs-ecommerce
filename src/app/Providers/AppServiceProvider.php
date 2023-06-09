@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationGroup;
+
+use Illuminate\Foundation\Vite;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,5 +38,11 @@ class AppServiceProvider extends ServiceProvider
             'Resources',
             'Settings',
         ]);
+
+        Filament::serving(function () {
+            Filament::registerTheme(
+                app(Vite::class)('resources/css/filament.css'),
+            );
+        });
     }
 }
