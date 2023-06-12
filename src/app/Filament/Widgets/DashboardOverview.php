@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Definitions\UserType;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\StoreAccount;
 use App\Models\User;
@@ -13,9 +14,7 @@ class DashboardOverview extends BaseWidget
 {
     protected function getCards(): array
     {
-        $customersCount = User::query()->whereHas('roles', function ($query) {
-            return $query->where('name', '<>', UserType::getAdminRolesOnly());
-        })->count();
+        $customersCount = Customer::query()->count();
 
         $totalProducts = Product::query()->where('is_approved', 0)->count();
 
