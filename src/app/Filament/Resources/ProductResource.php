@@ -17,8 +17,10 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
+use stdClass;
 
 
 class ProductResource extends Resource
@@ -38,7 +40,9 @@ class ProductResource extends Resource
                 Forms\Components\Select::make('store_account_id')
                     ->relationship('account', 'name')
                     ->label('Store Account')
-                    ->required(),
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -65,6 +69,16 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id')->getStateUsing(
+                    static function (stdClass $rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->tableRecordsPerPage * (
+                                    $livewire->page - 1
+                                ))
+                        );
+                    }
+                ),
                 TextColumn::make('name')->sortable(),
                 TextColumn::make('account.name'),
                 TextColumn::make('price')->sortable(),

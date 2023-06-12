@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Definitions\BaseDefinition;
 use App\Definitions\UserType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -39,7 +40,8 @@ class UserSeeder extends Seeder
             if (!DB::table('users')->where('email', $user['email'])->exists()) {
                  $customer = Model::factory()->create([
                      'name' => $user['name'],
-                     'email' => $user['email']
+                     'email' => $user['email'],
+                     'is_admin_panel_user' => BaseDefinition::IS_ADMIN
                  ]);
 
                  $customer->assignRole(Role::create(['name' => $user['role']]));

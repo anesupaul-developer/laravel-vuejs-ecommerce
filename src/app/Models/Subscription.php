@@ -13,7 +13,8 @@ class Subscription extends Model
     protected $fillable = [
         'name',
         'description',
-        'price'
+        'price',
+        'color_code'
     ];
 
 //    protected function price(): Attribute

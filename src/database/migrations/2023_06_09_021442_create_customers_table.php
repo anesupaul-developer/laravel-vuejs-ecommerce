@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_approved')->default(false);
+            $table->tinyInteger('subscription_id')->nullable()->default(0);
+            $table->foreignId('approved_by')->nullable();
             $table->timestamps();
         });
     }

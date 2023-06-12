@@ -6,6 +6,7 @@ use App\Filament\Resources\SubscriptionResource\Pages;
 use App\Filament\Resources\SubscriptionResource\RelationManagers;
 use App\Models\Subscription;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -34,8 +35,15 @@ class SubscriptionResource extends Resource
                         ->required(),
                     Forms\Components\Textarea::make('description')
                         ->maxLength(255),
+                    Select::make('color_code')
+                        ->options([
+                            'danger' => 'Danger',
+                            'success' => 'Success',
+                            'warning' => 'Warning',
+                            'primary' => 'Primary'
+                        ])->searchable()
                 ]
-            ))->columns(1);
+            ))->columns(2);
     }
 
     public static function table(Table $table): Table
@@ -44,6 +52,8 @@ class SubscriptionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('color_code')
+                ->color(fn($record) => $record->name ?? 'danger'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('Y-m-d H:i'),
             ])

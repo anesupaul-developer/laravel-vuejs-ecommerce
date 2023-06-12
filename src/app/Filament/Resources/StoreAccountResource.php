@@ -36,7 +36,8 @@ class StoreAccountResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('owner', 'name')
                     ->required()
-                    ->unique(ignoreRecord: true),
+                    ->unique(ignoreRecord: true)
+                    ->searchable(),
             ]));
     }
 
