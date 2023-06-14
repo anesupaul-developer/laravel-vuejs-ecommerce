@@ -9,4 +9,26 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    protected function getInertiaError(string $message): array
+    {
+        return [
+            'toast_notification' => [
+                'message' => $message,
+                'bgColor' => 'blue'
+            ]
+        ];
+    }
+
+    protected function getInertiaSuccess(string $message): array
+    {
+        return [
+            'toast_notification' => [
+                'message' => $message,
+                'bgColor' => 'green'
+            ]
+        ];
+    }
+
+
 }

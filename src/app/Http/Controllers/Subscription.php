@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Subscription as Model;
+use Illuminate\Support\Str;
 
 class Subscription extends Controller
 {
@@ -35,6 +36,6 @@ class Subscription extends Controller
 
         $request->user()->customer()->update(['subscription_id' => $subscriptionRequest->get('subscription_id')]);
 
-        return Redirect::route('customer.store-account.index');
+        return Redirect::route('customer.store-account.index')->with($this->getInertiaSuccess('Success. Please create account'));
     }
 }

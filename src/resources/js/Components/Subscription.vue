@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex items-center justify-center bg-[#FFFFFF]">
+  <div class="flex items-center justify-center bg-[#000]">
     <!-- Button 1 -->
     <div class="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
       <div class="mx-auto mb-8 max-w-screen-md  lg:mb-12 text-center">

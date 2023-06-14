@@ -3,7 +3,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import {Head, router, useForm, usePage} from '@inertiajs/vue3';
 import Subscription from "@/Components/Subscription.vue";
 import {ref} from "vue";
-import SubscriptionPayment from "@/Components/SubscriptionPayment.vue";
 import InputError from "@/Components/InputError.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
@@ -12,6 +11,7 @@ import Modal from "@/Components/Modal.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import ActionButton from "@/Components/ActionButton.vue";
+import errors from "@/Helpers/errors.js";
 
 const page = usePage();
 
@@ -44,7 +44,7 @@ function addPaymentForm(sub) {
 function subscribeCustomer() {
   form.post('customer/subscription', {
     onError: params => {
-      console.log(params);
+      errors.displayErrors(params);
     }
   });
 }
@@ -54,10 +54,6 @@ function subscribeCustomer() {
   <Head title="Dashboard"/>
 
   <AuthenticatedLayout>
-    <!--      <template #header>-->
-    <!--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>-->
-    <!--      </template>-->
-
     <section v-if="$page.props.auth.user.is_admin_panel_user !== 2"
              class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
       <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">

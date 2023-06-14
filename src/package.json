@@ -18,5 +18,8 @@
         "tippy.js": "^6.3.7",
         "vite": "^4.0.0",
         "vue": "^3.2.41"
+    },
+    "dependencies": {
+        "@inertiajs/inertia": "^0.11.1"
     }
 }
