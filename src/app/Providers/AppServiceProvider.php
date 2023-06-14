@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Interfaces\PaymentGatewayInterface;
+use App\Services\Stripe;
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationGroup;
 
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(PaymentGatewayInterface::class, Stripe::class);
     }
 
     /**

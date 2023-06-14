@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreAccount;
+use App\Http\Controllers\Subscription;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::prefix('customer')->group(function () {
         Route::post('/apply-account', [StoreAccount::class, 'apply'])->name('store.account.apply');
+        Route::post('/subscription', [Subscription::class, 'store'])->name('customer.subscription.store');
+        Route::get('/store-account', [StoreAccount::class, 'index'])->name('customer.store-account.index');
     });
 });
 

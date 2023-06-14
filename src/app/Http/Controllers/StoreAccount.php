@@ -11,6 +11,11 @@ use Inertia\Inertia;
 
 class StoreAccount extends Controller
 {
+    public function index(): \Inertia\Response
+    {
+        return Inertia::render('StoreAccount', []);
+    }
+
     public function apply(Request $request): RedirectResponse
     {
         $request->user()->update(['is_admin_panel_user' => BaseDefinition::IS_NOT_ADMIN]);

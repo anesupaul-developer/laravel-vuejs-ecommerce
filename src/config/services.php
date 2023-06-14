@@ -30,5 +30,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'stripe' => [
+        'unique_id' => env('STRIPE_UNIQUE_ID'),
+        'publisher_key' => env('STRIPE_KEY')
+    ]
 
 ];
