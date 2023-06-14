@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('is_admin_panel_user')->after('email')->default(BaseDefinition::IS_NOT_ADMIN);
+            $table->tinyInteger('is_admin_panel_user')->after('email')->default(BaseDefinition::UNASSIGNED_USER);
         });
     }
 

@@ -20,4 +20,9 @@ class Customer extends BaseModel
     {
         return $this->belongsTo(Subscription::class, 'subscription_id', 'id');
     }
+
+    public function scopeIsApproved($query)
+    {
+        return $query->where('user_id', auth()->user()->id)->where('is_approved', BaseDefinition::APPROVED)->exists();
+    }
 }

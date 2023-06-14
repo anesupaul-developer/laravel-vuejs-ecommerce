@@ -7,6 +7,8 @@ use App\Definitions\UserType;
 use App\Models\Traits\HasCustomer;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -25,6 +27,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'is_admin_panel_user'
     ];
 
     /**
@@ -50,5 +53,10 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessFilament(): bool
     {
         return $this->hasRole(UserType::getAdminRolesOnly());
+    }
+
+    public function customer(): HasOne
+    {
+        return $this->hasOne(Customer::class, 'user_id', 'id');
     }
 }

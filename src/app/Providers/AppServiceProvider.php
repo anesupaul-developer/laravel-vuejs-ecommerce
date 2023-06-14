@@ -39,10 +39,8 @@ class AppServiceProvider extends ServiceProvider
             'Settings',
         ]);
 
-        Filament::serving(function () {
-            Filament::registerTheme(
-                app(Vite::class)('resources/css/filament.css'),
-            );
-        });
+//        Filament::serving(function () {
+//            Filament::registerViteTheme('resources/css/filament.css');
+//        });
     }
 }
