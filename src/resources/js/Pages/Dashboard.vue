@@ -99,7 +99,7 @@ function subscribeCustomer() {
         </p>
 
         <div class="mt-3">
-          <form @submit.prevent="subscribe" class="space-y-8">
+          <form @submit.prevent="subscribeCustomer" class="space-y-8">
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
               <div class="w-full">
                 <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Credit Card

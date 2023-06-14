@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/apply-account', [StoreAccount::class, 'apply'])->name('store.account.apply');
         Route::post('/subscription', [Subscription::class, 'store'])->name('customer.subscription.store');
         Route::get('/store-account', [StoreAccount::class, 'index'])->name('customer.store-account.index');
+        Route::post('/store-account', [StoreAccount::class, 'store'])->name('customer.store-account.store');
     });
 });
 
