@@ -15,9 +15,11 @@ use App\Models\StoreAccount as Model;
 
 class StoreAccount extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return Inertia::render('StoreAccount', []);
+        return Inertia::render('StoreAccount', [
+            'account' => Model::query()->where('user_id', $request->user()->id)->first()
+        ]);
     }
 
     /**
